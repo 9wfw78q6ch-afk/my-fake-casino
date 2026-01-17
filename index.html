@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Casino</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Custom styles -->
+  <style>
+    body {
+      background-color: #020617;
+      color: #f8fafc;
+      font-family: 'Inter', sans-serif;
+    }
+    .font-orbitron { font-family: 'Orbitron', sans-serif; }
+    .neon-glow { box-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
+    .neon-text { text-shadow: 0 0 10px rgba(34, 211, 238, 0.8); }
+    .neon-text-gold { text-shadow: 0 0 15px rgba(250, 204, 21, 0.8); }
+    
+    /* Animations */
+    @keyframes coin-flip { 0% { transform: rotateY(0); } 100% { transform: rotateY(1800deg); } }
+    .animate-coin-flip { animation: coin-flip 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    @keyframes dice-roll { 0% { transform: rotate(0) scale(1); } 25% { transform: rotate(90deg) scale(1.1); } 50% { transform: rotate(180deg) scale(1); } 75% { transform: rotate(270deg) scale(1.1); } 100% { transform: rotate(360deg) scale(1); } }
+    .animate-dice-roll { animation: dice-roll 0.5s linear infinite; }
+    @keyframes slot-spin-loop { 0% { transform: translateY(-10px); } 50% { transform: translateY(10px); } 100% { transform: translateY(-10px); } }
+    .animate-slot-spin { animation: slot-spin-loop 0.15s linear infinite; }
+    @keyframes slot-bounce { 0% { transform: translateY(20px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0); } }
+    .animate-slot-stop { animation: slot-bounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+    @keyframes victory-burst { 0% { transform: scale(0.3); opacity: 0; filter: blur(10px); } 50% { transform: scale(1.2); opacity: 1; filter: blur(0px); } 100% { transform: scale(1); opacity: 1; } }
+    .animate-victory { animation: victory-burst 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    @keyframes scatter-explode { 0% { transform: scale(1); filter: brightness(1) drop-shadow(0 0 0px #a855f7); } 50% { transform: scale(1.4); filter: brightness(2.5) drop-shadow(0 0 25px #a855f7); } 100% { transform: scale(1); filter: brightness(1) drop-shadow(0 0 0px #a855f7); } }
+    .animate-scatter-explode { animation: scatter-explode 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite; }
+    @keyframes symbol-win-glow { 0%, 100% { border-color: #facc15; box-shadow: 0 0 10px #facc15; transform: scale(1); } 50% { border-color: #ffffff; box-shadow: 0 0 35px #facc15; transform: scale(1.15); } }
+    .animate-symbol-win { animation: symbol-win-glow 1s ease-in-out infinite; }
+    @keyframes shake { 0%, 100% { transform: translate(0, 0); } 10%,30%,50%,70%,90% { transform: translate(-2px,-2px); } 20%,40%,60%,80% { transform: translate(2px,2px); } }
+    .animate-shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+    @keyframes flash { 0% { opacity: 0; } 10% { opacity: 0.8; } 100% { opacity: 0; } }
+    .animate-flash { animation: flash 0.5s ease-out forwards; }
+    @keyframes emoji-float { 0% { transform: translateY(0) scale(0.5) rotate(0); opacity: 0; } 20% { opacity: 1; transform: translateY(-20px) scale(1.2); } 100% { transform: translateY(-400px) scale(1.5) rotate(45deg); opacity: 0; } }
+    .animate-emoji-float { animation: emoji-float 3s cubic-bezier(0.4, 0, 0.2, 1) forwards; pointer-events: none; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+  </style>
+
+  <!-- Import map pro ESM moduly -->
+  <script type="importmap">
+  {
+    "imports": {
+      "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+      "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+      "@google/genai": "https://esm.sh/@google/genai@^1.36.0",
+      "react": "https://esm.sh/react@^19.2.3",
+      "react/": "https://esm.sh/react@^19.2.3/"
+    }
+  }
+  </script>
+
+  <!-- Lokální CSS -->
+  <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Změněný entry point -->
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
